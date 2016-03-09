@@ -137,8 +137,7 @@ public class OAuth2SecurityConfiguration {
 					// Create a client that has "read" and "write" access to the
 					// estate service
 					.withClient("mobile").authorizedGrantTypes("password")
-					.authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT").scopes("read", "write")
-					.resourceIds("estate")
+					.authorities("ROLE_CLIENT", "ROLE_TRUSTED_CLIENT").scopes("read", "write").resourceIds("estate")
 					.and()
 					// Create a second client that only has "read" access to the
 					// estate service
@@ -147,10 +146,9 @@ public class OAuth2SecurityConfiguration {
 
 			// Create a series of hard-coded users.
 			UserDetailsService svc = new InMemoryUserDetailsManager(Arrays.asList(
-					User.create("admin", "123456", "ADMIN", "USER"), User.create("user1", "123456", "USER"),
-					User.create("user1", "xxaccca", "USER"), User.create("user2", "xxaccca", "USER"),
-					User.create("user3", "xxaccca", "USER"), User.create("user4", "xxaccca", "USER"),
-					User.create("user5", "xxaccca", "USER")));
+					User.create("admin", "123456", "ADMIN", "USER"), User.create("user1", "xxaccca", "USER"),
+					User.create("user2", "xxaccca", "USER"), User.create("user3", "xxaccca", "USER"),
+					User.create("user4", "xxaccca", "USER"), User.create("user5", "xxaccca", "USER")));
 
 			// Since clients have to use BASIC authentication with the client's id/secret,
 			// when sending a request for a password grant, we make each client a user
